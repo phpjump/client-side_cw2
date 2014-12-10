@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<title>Estate agent</title>
+	<style >
+
+.form-wrap {
+  width: 700px;
+  margin: 30px auto;
+}
+.labels {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.6em;
+}
+.element {
+  padding: 6px 0;
+}
+.prop-type-radioset{
+	font-size: .6em;
+}
+.selections{
+	width:130px;
+}
+.room-min,.room-max {
+  width: 100px;
+}
+.property-price-max-sel,.property-price-min-sel,.property-rooms-max-sel,.property-rooms-min-sel{
+	font-size: .6em;
+}
+
+#ui-id-1-menu,#ui-id-2-menu,#ui-id-3-menu,#ui-id-4-menu {
+  text-align:center;
+  font-size: .6em;
+}
+
+#ui-id-4-button {
+
+  text-align: center;
+}
+.submit {
+  padding: 20px 0;
+}
+.btn {
+  background-color: #428BCA;
+  padding: 5px 8px;
+  font-size: .8em;
+}
+
+.ui-button-text {
+  padding: 5px 8px;
+} 
+.ui-widget{
+  margin-top: 4px;
+}
+.btn{
+  color: #428BCA;
+  border-color: #428BCA;
+}
+.btn:hover{
+  color: #555;
+  border-color: #555;
+}
+	</style>
+</head>
+<body>
+<div class="form-wrap">
+<!-- <form name="property-specs" method="" action="#"> -->
+
+    <div class="prop-type-radioset element">
+      <label class="labels">Type of property</label><br>
+
+      <input type="radio" id="house" name="property-type">
+      <label for="house">House</label>
+
+      <input type="radio" id="flat" name="property-type" checked>
+      <label for="flat">Flat</label>
+
+      <input type="radio" id="all" name="property-type">
+      <label for="all">All</label>
+    </div>
+   
+    <div class="property-price-min-sel element">
+      <label class="labels">Min Price</label><br>
+<select class="selections price-min">
+      <option>No Min</option>
+      <option>2,0023</option>
+      <option>3,0000</option>
+      <option>4,0000</option>
+      <option>5,0000</option>
+      <option>6,0000</option>
+      <option>7,0000</option>
+      <option>8,0000</option>
+</select>
+    </div>
+     <div class="property-price-max-sel element">
+      <label class="labels" >Max Price</label><br>
+<select class="selections price-max">
+      <option>No Max</option>
+      <option>20,0023</option>
+      <option>30,0000</option>
+      <option>40,0000</option>
+      <option>50,0000</option>
+      <option>60,0000</option>
+      <option>70,0000</option>
+      <option>80,0000</option>
+</select>
+    </div>   
+<div class="property-rooms-min-sel element">
+      <label class="labels">Min Rooms</label><br>
+<select class="selections room-min" >
+      <option>No Min</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+</select>
+    </div> <div class="property-rooms-max-sel element">
+    	<label class="labels" >Max Rooms</label><br>
+<select class="selections room-max">
+      <option>No Max</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+</select>
+    </div>
+<div class="search">
+    <button class="btn">Search for property</button>
+</div>
+<div class="favourites">
+    <button class="btn">Favourites</button>
+</div>
+<!-- </form> -->
+</div>
+<div id="placeholder"></div>
+<script>
+
+// $(function() {
+//     $( ".price-max" ).selectmenu();
+//     $( ".price-min" ).selectmenu();
+//     $( ".room-max" ).selectmenu();
+//     $( ".room-min" ).selectmenu();
+//     $( ".prop-type-radioset" ).buttonset();
+//     $( ".btn" ).button();
+    
+//     $(".submit").on("click","button",function(){
+//       var propertyType =  $(".prop-type-radioset :radio:checked + label").text();
+//       var minPrice = $(".price-min").val();
+//       var maxPrice = $(".price-Max").val();
+//       var maxRoom = $(".room-max").val();
+//       var minRoom = $(".room-min").val();
+//       alert("You chose: " + propertyType + "\nMin rooms: " + minRoom + "\nMax rooms: "+maxRoom+"\nMin price: " + minPrice + "\nMax price: "+maxPrice );
+//     });
+// });
+// </script>
+<script src="js/readingJson.js"></script>
+</body>
+</html>
