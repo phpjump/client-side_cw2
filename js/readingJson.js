@@ -127,13 +127,13 @@ document.getElementById("placeholder").innerHTML = output;
 // 			 	}
 // 	}) ;
 
-// 	$(".clearFav").on("click", function(){
-// 		 myFavouriteStaff = JSON.parse(localStorage.getItem("favStaff"));
-// 		if(myFavouriteStaff == null){
-// 			return;
-// 		}
-// 		localStorage.clear();
-// 	}) ;
+	$(".clearFav").on("click", function(){
+		 favouriteProperties = JSON.parse(localStorage.getItem("favProperty"));
+		if(favouriteProperties == null){
+			return;
+		}
+		localStorage.clear();
+	}) ;
 
 
 
