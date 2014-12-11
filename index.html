@@ -1,71 +1,40 @@
 <!doctype html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <title>Estate agent</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+     <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/estate-agent-style.css">
+
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<title>Estate agent</title>
-	<style >
-
-.form-wrap {
-  width: 700px;
-  margin: 30px auto;
-}
-.labels {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 1.6em;
-}
-.element {
-  padding: 6px 0;
-}
-.prop-type-radioset{
-	font-size: .6em;
-}
-.selections{
-	width:130px;
-}
-.room-min,.room-max {
-  width: 100px;
-}
-.property-price-max-sel,.property-price-min-sel,.property-rooms-max-sel,.property-rooms-min-sel{
-	font-size: .6em;
-}
-
-#ui-id-1-menu,#ui-id-2-menu,#ui-id-3-menu,#ui-id-4-menu {
-  text-align:center;
-  font-size: .6em;
-}
-
-#ui-id-4-button {
-
-  text-align: center;
-}
-.submit {
-  padding: 20px 0;
-}
-.btn {
-  background-color: #428BCA;
-  padding: 5px 8px;
-  font-size: .8em;
-}
-
-.ui-button-text {
-  padding: 5px 8px;
-} 
-.ui-widget{
-  margin-top: 4px;
-}
-.btn{
-  color: #428BCA;
-  border-color: #428BCA;
-}
-.btn:hover{
-  color: #555;
-  border-color: #555;
-}
-	</style>
+	
 </head>
-<body>
+<body class="bdy">
+  <header class="header"><img  class="logo" src="images/estate_logo.png"><div class="title-wrap"><span class="title">O'Grady</span><span class="lower-title" >Estate Agents</span></div>
+
+<span class="menu-anchor"></span>
+
+  </header>
+
+  <menu>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Buying a Property</a></li>
+    <li><a href="#">Selling a Property</a></li>
+    <li><a href="#">Quote for Selling</a></li>
+    <li><a href="#">Property Selling Guide</a></li>
+    <li><a href="#">Property Buying Guide</a></li>
+    <li><a href="#">Buying Client Testimonial</a></li>
+    <li><a href="#">Property Search</a></li>
+    <li><a href="#">Quote for Buying With O'Grady</a></li>
+  </ul>
+</menu>
+  <section class="main">
+<div class="upper-whole-wrap"><span class="upper-img-text">London's Supreme Home Agent</span></div>
+
+
 <div class="form-wrap">
 <!-- <form name="property-specs" method="" action="#"> -->
 
@@ -139,6 +108,7 @@
 <!-- </form> -->
 </div>
 <div id="placeholder"></div>
+</section>
 <script>
 
 // $(function() {

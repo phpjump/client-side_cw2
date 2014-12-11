@@ -1,0 +1,302 @@
+body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+header {
+  position: relative;
+  color: #fff;
+  background-color: #191919;
+  height: 77px;
+}
+.logo { 
+  float: left;
+  padding: 10px 0 0 70px;
+  width:60px ;
+  height:50px;
+  background-repeat:no-repeat;
+}
+
+.title {
+  
+  position: absolute;
+  left: 150px;
+  top: -6px;
+  font-family: 'MS Serif';
+  font-size: 2.5em;
+}
+.lower-title {
+  position: absolute;
+  left: 160px;
+  top: 34px;
+  width: 200px;
+  font-size: 1em;
+}
+
+.title-wrap {
+  position: absolute;
+  left:-20px;
+  top: 10px;
+}
+
+.upper-whole-wrap {
+  position: relative;
+  background-image: url(../images/fullpage-image.jpg);
+  width:100%;
+  height: 500px;
+}
+
+.upper-img-text {
+  position: absolute;
+  font-size: 2.5em;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  padding: 14px 0 0 20px;
+  text-shadow: 5px 5px 10px #777;
+  
+}
+
+.upper-section {
+  height: 2000px
+}
+/*
+|----------------------------------------
+| FORM STYLE
+|----------------------------------------
+ */
+.form-wrap {
+  width: 700px;
+  margin: 30px auto;
+}
+.labels {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 1.6em;
+}
+.element {
+  padding: 6px 0;
+}
+.prop-type-radioset{
+	font-size: .6em;
+}
+.selections{
+	width:130px;
+}
+.room-min,.room-max {
+  width: 100px;
+}
+.property-price-max-sel,.property-price-min-sel,.property-rooms-max-sel,.property-rooms-min-sel{
+	font-size: .6em;
+}
+
+#ui-id-1-menu,#ui-id-2-menu,#ui-id-3-menu,#ui-id-4-menu {
+  text-align:center;
+  font-size: .6em;
+}
+
+#ui-id-4-button {
+
+  text-align: center;
+}
+.submit {
+  padding: 20px 0;
+}
+.btn {
+  background-color: #428BCA;
+  padding: 5px 8px;
+  font-size: .8em;
+}
+
+.ui-button-text {
+  padding: 5px 8px;
+} 
+.ui-widget{
+  margin-top: 4px;
+}
+.btn{
+  color: #428BCA;
+  border-color: #428BCA;
+}
+.btn:hover{
+  color: #555;
+  border-color: #555;
+}
+
+.back-btn {
+color: #428BCA;
+padding: 10px 20px;
+border: 1px solid #428BCA;
+background-color: #E6E6E6;
+text-decoration: none;
+font-size: .8em;
+border-radius: 6px;
+}
+
+.back-btn:hover {
+  background-color: #e0dfdf;
+  color: #333; 
+  border: 1px solid #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {overflow-x: hidden;}
+
+body {
+ /* font: 100% arial, verdana, tahoma, sans-serif;
+  color: #FFF;
+  background-color: #f1c40f;*/
+}
+
+header {
+  /*background: #f49c14;
+  padding: 30px;*/
+  overflow: hidden;
+}
+
+header h1 {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 80%;
+  font-size: 1.5em;
+}
+h1 a {color: #FFF; text-decoration: none;}
+
+header input {
+  float: right;
+  padding: 10px;
+  width: 200px;
+  border: none;
+}
+
+/*.main {
+  padding: 30px;
+}*/
+.main p {
+  font-size: .9em;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+}
+
+.menu-anchor {
+  width: 40px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  /*text-indent: -9999px;*/
+  left: -122px;
+  margin: 20px 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #191919;
+  border-radius: 2px;
+  border: 1px solid #fff;
+}
+
+.menu-anchor:before {
+  content: "";
+  display: block;
+  margin: 7px auto;
+  width: 70%;
+  height: 0.25em;
+  background: #f49c14;
+  box-shadow: 0 .45em 0 0 #f49c14, 0 .9em 0 0 #f49c14;
+}
+
+.menu-active .menu-anchor {background: #d55401}
+
+menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 220px;
+  height: 100%;
+  padding-top: 10px;
+  background: #d55401;
+  box-shadow: inset -5px -10px 10px 0 rgba(0,0,0,.3)
+}
+
+menu li a {
+  display: block;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  margin: 0 10px;
+  padding: 10px;
+  color: #FFF;
+  text-decoration: none;
+}
+
+menu li a:hover {
+  background: #FFF;
+  color: #d55401;
+}
+
+
+/*
+  Aqui você esconde o menu para fora da tela 
+  O valor é exatamente a largura da sidebar
+*/
+menu {
+  -webkit-transform: translateX(-220px);
+  -moz-transform: translateX(-220px);
+  -ms-transform: translateX(-220px);
+  transform: translateX(-220px);
+  -webkit-transition: all .25s linear;
+  -moz-transition: all .25s linear;
+  -ms-transition: all .25s linear;
+  transition: all .25s linear;
+}
+
+/*
+  Essa é a posição original do HEADER e do MAIN
+*/
+header, .main {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: all .25s linear;
+  -moz-transition: all .25s linear;
+  -ms-transition: all .25s linear;
+  transition: all .25s linear;
+}
+
+/*
+   Com a classe menu-active na tag HTML
+*/
+.menu-active menu {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.menu-active header, 
+.menu-active .main {
+  -webkit-transform: translateX(220px);
+  -moz-transform: translateX(220px);
+  -ms-transform: translateX(220px);
+  transform: translateX(220px);
+}

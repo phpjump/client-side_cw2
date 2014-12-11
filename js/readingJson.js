@@ -1,4 +1,16 @@
 $(document).ready(function(){
+	//this function toggles the menu-active class when ever the small menu icon is clicked
+	$('.menu-anchor').on('click touchstart', function(e){
+		$('html').toggleClass('menu-active');
+	  	e.preventDefault();
+	});
+//this function acts in conjuction with the above function
+//but it allows you to click anywhere outside of the menu icon and the menu-active class
+//will be removed, this will result in the page going back to its default position
+$('.main').on('click touchstart', function(e){
+	$('html').removeClass('menu-active');
+	});
+
 
 	$(function() {
     $( ".price-max" ).selectmenu();
@@ -48,7 +60,7 @@ $(".search").on("click", function(){
 		for (var i in data.properties) {
 
 			if((propertyType == output[i])|| (propertyType == "All")){
-				display += "<li><img src='"+ data.properties[i].picture + "'><br>" + data.properties[i].location + data.properties[i].type + " <br>  <a href='property-details.html?id="+data.properties[i].id+"'>Go to "+data.properties[i].type+"'s home page</a></li>";
+				display += "<li><a href='property-details.html?id="+data.properties[i].id+"'><img src='"+ data.properties[i].picture + "'></a><br>" + data.properties[i].location + data.properties[i].type + " <br>  <a href='property-details.html?id="+data.properties[i].id+"'>Go to "+data.properties[i].type+"'s home page</a></li>";
 			 }
 		}
 		display += "</ul>";
@@ -97,7 +109,7 @@ $(".search").on("click", function(){
 		for (var i = 0;i< data.properties.length;i++) {
 			 	for (var j = 0; j < favouriteProperties.length; j++) {
 			 		if(data.properties[i].id == favouriteProperties[j]){
-			 			output += "<li><img src='"+ data.properties[i].picture + "'><br>" + data.properties[i].location + data.properties[i].type + " <br>  <a href='property-details.html?id="+data.properties[i].id+"'>Go to "+data.properties[i].type+"'s home page</a></li>";
+			 			output += "<li><a href='property-details.html?id="+data.properties[i].id+"'><img src='"+ data.properties[i].picture + "'></a><br>" + data.properties[i].location + data.properties[i].type + " <br>  <a href='property-details.html?id="+data.properties[i].id+"'>Go to "+data.properties[i].type+"'s home page</a></li>";
 			 		}
 			 	}
 		}

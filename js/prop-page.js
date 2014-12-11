@@ -1,4 +1,15 @@
 $(document).ready(function(){
+//this function toggles the menu-active class when ever the small menu icon is clicked
+	$('.menu-anchor').on('click touchstart', function(e){
+		$('html').toggleClass('menu-active');
+	  	e.preventDefault();
+	});
+//this function acts in conjuction with the above function
+//but it allows you to click anywhere outside of the menu icon and the menu-active class
+//will be removed, this will result in the page going back to its default position
+$('.main').on('click touchstart', function(e){
+	$('html').removeClass('menu-active');
+	});
 
 var propertyId = "";
 $(".return").on("click", function(){
