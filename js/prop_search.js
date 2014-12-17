@@ -1,4 +1,170 @@
-{ 
+$(document).ready(function() {
+
+	//this function toggles the menu-active class when ever the menu icon in header is clicked
+	$('.menu-anchor').on('click touchstart', function(e) {
+		$('html').toggleClass('menu-active');
+		e.preventDefault();
+	});
+
+    /**
+     * this function acts in conjuction with the above function
+     * but it allows you to click anywhere outside of the menu icon and the menu-active class
+     * will be removed, this will result in the page going back to its default position
+     */
+	$('.main').on('click touchstart', function(e) {
+		$('html').removeClass('menu-active');
+	});
+
+    /**
+     * This function creates the jQuery dropdown menu and buttonset
+     */
+	$(function() {
+		$(".price-max").selectmenu();
+		$(".price-min").selectmenu();
+		$(".room-max").selectmenu();
+		$(".room-min").selectmenu();
+		$(".prop-type-radioset").buttonset();
+		$(".btn").button();
+	});
+
+	// $.getJSON('properties.json', function(data) {
+		var propertyArr = [];
+		for (var i in data.properties) {
+			propertyArr[i] = data.properties[i].type;
+		}
+
+        /**
+         * This section of code is responsible for searching the JSON data for values passed from 
+         * the drop down boxes and radio buttons.
+         * It first replaces the string values with integers.
+         * It then sets conditions set by the user in its search through the data.
+         * When a property meets all conditions it is displayed to the user by way of a set placeholder.
+         * If nothing is found the user will be notified.
+         */
+		$(".search").on("click", function() {
+            //this line gets the value from the buttonset
+			var propertyType = $(".prop-type-radioset :radio:checked + label").text();
+			var minPrice = $(".price-min").val();
+			var maxPrice = $(".price-max").val();
+			var maxRoom = $(".room-max").val();
+			var minRoom = $(".room-min").val();
+			if (minPrice != "No Min") {
+				minPrice = parseInt(minPrice.replace(/,/g, ''));
+			}
+			if (maxPrice != "No Max") {
+				maxPrice = parseInt(maxPrice.replace(/,/g, ''));
+			}
+			if (minPrice == "No Min") {
+				minPrice = 0;
+			}
+			if (maxPrice == "No Max") {
+				maxPrice = 99999999999;
+			}
+			if (minRoom == "No Min") {
+				minRoom = 0;
+			}
+			if (maxRoom == "No Max") {
+				maxRoom = 99999999999;
+			}
+
+			if (propertyType == "All") {
+				var display = "<h3 class='search-head'>" + propertyType + " properties</h3>";
+			} else {
+				display = "<h3 class='search-head'>" + propertyType + "s</h3>";
+			}
+
+			for (var i in data.properties) {
+                //conditions set by the user
+				if (((propertyType == "All") || (propertyType == propertyArr[i])) && (data.properties[i].bedrooms >= minRoom) && (data.properties[i].bedrooms <= maxRoom) && (data.properties[i].price >= minPrice) && (data.properties[i].price <= maxPrice)) {
+
+					var price = numberWithCommas(data.properties[i].price);
+					var description = data.properties[i].description;
+
+					display += "<div class='property-detail'><div class='row'><div class='c2'><a href='property-details.html?id=" + data.properties[i].id + "'>" + "<img class='property-image' src='" + data.properties[i].picture + "'></a></div>" + "<div class='c8'><span class='prop-location'>" + data.properties[i].type + ":    " + data.properties[i].location + "</span>  " + "<p class='short-desc'>" + smartTrim(description, 330, ' ', '   ') + "<a class='property-link' href='property-details.html?id=" + data.properties[i].id + "'>&nbsp;&nbsp;More....</a></p></div>" + "<div class='c2 prop-price'><div class='pound sprite price-image'></div><span class='price-text'>&pound;" + price + "</span><div class='bedroom sprite bed-image'></div><span class='bed-text'>Bedroom: "+data.properties[i].bedrooms+"</span></div></div></div><div class='clr'></div>";
+				}
+			}
+
+			document.getElementById("placeholder").innerHTML = display;
+			// check for empty search results. 
+			if (description == null) {
+				var notFound = "<div class='not-found'>Sorry, we have no properties that fit the search criteria.</div>";
+				document.getElementById("placeholder").innerHTML = notFound;
+			}
+		});
+
+        /**
+         * This function is responsible for obtaining values from local storage
+         * and displaying them to the user.
+         * It does this by looping through both the JSON file and the local storage array.
+         * If the 'id' property matches in both arrays it is displayed as a favourite.
+         */
+		$(".favourites").on("click", function() {
+			console.log("Restoring array data from local storage");
+			favouriteProperties = JSON.parse(localStorage.getItem("favProperty"));
+			output = "<ul>";
+			if (favouriteProperties != null) {
+				for (var i = 0; i < data.properties.length; i++) {
+					for (var j = 0; j < favouriteProperties.length; j++) {
+						if (data.properties[i].id == favouriteProperties[j]) {
+							var price = numberWithCommas(data.properties[i].price);
+							var description = data.properties[i].description;
+
+							output += "<div class='property-detail'><div class='row'><div class='c2'><a href='property-details.html?id=" + data.properties[i].id + "'>" + "<img class='property-image' src='" + data.properties[i].picture + "'></a></div>" + "<div class='c8'><span class='prop-location'>" + data.properties[i].type + ":    " + data.properties[i].location + "</span>  " + "<p class='short-desc'>" + smartTrim(description, 330, ' ', '   ') + "<a class='property-link' href='property-details.html?id=" + data.properties[i].id + "'>  &nbsp;&nbsp;More....</a></p></div>" + "<div class='c2 prop-price'><div class='pound sprite price-image'></div><span class='price-text'>&pound;" + price + "</span><div class='bedroom sprite bed-image'></div><span class='bed-text'>Bedroom: "+data.properties[i].bedrooms+"</span></div></div></div><div class='clr'></div>";
+						}
+					}
+				}
+			}
+
+			output += "</ul>";
+			document.getElementById("placeholder").innerHTML = output;
+			// check for empty search results. 
+			if (description == null) {
+				var notFound = "<div class='not-found'>You have no favourites at the moment.</div>";
+				document.getElementById("placeholder").innerHTML = notFound;
+			}
+		});
+
+		$(".clear-fav").on("click", function() {
+			favouriteProperties = JSON.parse(localStorage.getItem("favProperty"));
+			if (favouriteProperties == null) {
+				return;
+			}
+			localStorage.clear();
+		});
+	});
+
+// });
+
+/**
+ * this function removes the last word when the substring function
+ * is used, instead of displaying half a word.
+ * It was used for the short description of properties in the search
+ */
+function smartTrim(str, length, delim, appendix) {
+	if (str.length <= length) return str;
+	var trimmedStr = str.substr(0, length + delim.length);
+	var lastDelimIndex = trimmedStr.lastIndexOf(delim);
+	if (lastDelimIndex >= 0) trimmedStr = trimmedStr.substr(0, lastDelimIndex);
+	if (trimmedStr) trimmedStr += appendix;
+	return trimmedStr;
+}
+
+/**
+ * this function sets commas into an integer value of more
+ * three digits. It uses regular expressions to achieve this.
+ * It is used for displaying the property price
+ */
+function numberWithCommas(n) {
+	var parts = n.toString().split(".");
+	return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+}
+
+/**
+ *------------------------------------------------------
+ *  JSON FILE VALUES FOR THE PROPERTY SEARCH PAGE
+ * -----------------------------------------------------
+ */
+var data = { 
 	"properties": [
         {
             "id":"prop10",

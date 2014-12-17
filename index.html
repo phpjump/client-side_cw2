@@ -1,134 +1,177 @@
 <!doctype html>
 <html>
-<head>
-  <title>Estate agent</title>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-     <link href='http://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/estate-agent-style.css">
-
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	
-</head>
-<body class="bdy">
-  <header class="header"><img  class="logo" src="images/estate_logo.png"><div class="title-wrap"><span class="title">O'Grady</span><span class="lower-title" >Estate Agents</span></div>
-
-<span class="menu-anchor"></span>
-
-  </header>
-
-  <menu>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Buying a Property</a></li>
-    <li><a href="#">Selling a Property</a></li>
-    <li><a href="#">Quote for Selling</a></li>
-    <li><a href="#">Property Selling Guide</a></li>
-    <li><a href="#">Property Buying Guide</a></li>
-    <li><a href="#">Buying Client Testimonial</a></li>
-    <li><a href="#">Property Search</a></li>
-    <li><a href="#">Quote for Buying With O'Grady</a></li>
-  </ul>
-</menu>
-  <section class="main">
-<div class="upper-whole-wrap"><span class="upper-img-text">London's Supreme Home Agent</span></div>
-
-
-<div class="form-wrap">
-<!-- <form name="property-specs" method="" action="#"> -->
-
-    <div class="prop-type-radioset element">
-      <label class="labels">Type of property</label><br>
-
-      <input type="radio" id="house" name="property-type">
-      <label for="house">House</label>
-
-      <input type="radio" id="flat" name="property-type" checked>
-      <label for="flat">Flat</label>
-
-      <input type="radio" id="all" name="property-type">
-      <label for="all">All</label>
-    </div>
-   
-    <div class="property-price-min-sel element">
-      <label class="labels">Min Price</label><br>
-<select class="selections price-min">
-      <option>No Min</option>
-      <option>2,0023</option>
-      <option>3,0000</option>
-      <option>4,0000</option>
-      <option>5,0000</option>
-      <option>6,0000</option>
-      <option>7,0000</option>
-      <option>8,0000</option>
-</select>
-    </div>
-     <div class="property-price-max-sel element">
-      <label class="labels" >Max Price</label><br>
-<select class="selections price-max">
-      <option>No Max</option>
-      <option>20,0023</option>
-      <option>30,0000</option>
-      <option>40,0000</option>
-      <option>50,0000</option>
-      <option>60,0000</option>
-      <option>70,0000</option>
-      <option>80,0000</option>
-</select>
-    </div>   
-<div class="property-rooms-min-sel element">
-      <label class="labels">Min Rooms</label><br>
-<select class="selections room-min" >
-      <option>No Min</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-</select>
-    </div> <div class="property-rooms-max-sel element">
-    	<label class="labels" >Max Rooms</label><br>
-<select class="selections room-max">
-      <option>No Max</option>
-      <option>5</option>
-      <option>6</option>
-      <option>7</option>
-      <option>8</option>
-</select>
-    </div>
-<div class="search">
-    <button class="btn">Search for property</button>
-</div>
-<div class="favourites">
-    <button class="btn">Favourites</button>
-</div>
-<div class="clearFav">
-    <button class="btn">Clear Favourites</button>
-</div>
-<!-- </form> -->
-</div>
-<div id="placeholder"></div>
-</section>
-<script>
-
-// $(function() {
-//     $( ".price-max" ).selectmenu();
-//     $( ".price-min" ).selectmenu();
-//     $( ".room-max" ).selectmenu();
-//     $( ".room-min" ).selectmenu();
-//     $( ".prop-type-radioset" ).buttonset();
-//     $( ".btn" ).button();
-    
-//     $(".submit").on("click","button",function(){
-//       var propertyType =  $(".prop-type-radioset :radio:checked + label").text();
-//       var minPrice = $(".price-min").val();
-//       var maxPrice = $(".price-Max").val();
-//       var maxRoom = $(".room-max").val();
-//       var minRoom = $(".room-min").val();
-//       alert("You chose: " + propertyType + "\nMin rooms: " + minRoom + "\nMax rooms: "+maxRoom+"\nMin price: " + minPrice + "\nMax price: "+maxPrice );
-//     });
-// });
-// </script>
-<script src="js/readingJson.js"></script>
-</body>
+  <head>
+    <title>Estate agent</title>
+      <!-- fonts from google -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900' rel='stylesheet' type='text/css'>  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/estate-agent-style.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  </head>
+  <body class="bdy">
+    <header class="header">
+      <img  class="logo" src="images/estate_logo.png">
+      <a href="index.html" class="home-link">
+        <div class="title-wrap"><span class="title">O'Grady</span><span class="lower-title" >Estate Agents</span>
+      </a>
+      </div>
+      <span class="menu-anchor"></span>
+    </header>
+    <menu>
+      <ul>
+        <!-- menu inside the sliding sidebar -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Buying a Property</a></li>
+        <li><a href="#">Selling a Property</a></li>
+        <li><a href="#">Quote for Selling</a></li>
+        <li><a href="#">Property Selling Guide</a></li>
+        <li><a href="#">Property Buying Guide</a></li>
+        <li><a href="#">Buying Client Testimonial</a></li>
+        <li><a href="#">Property Search</a></li>
+        <li><a href="#">Quote for Buying With O'Grady</a></li>
+      </ul>
+    </menu>
+    <section class="main">
+      <div class="upper-whole-wrap"><span class="upper-img-text">London's Supreme Home Agent</span></div>
+      <div class="row">
+      <div class="c2"></div>
+      <div class="c8  form-section">
+        <div class="inner-form-section"></div>
+        <!-- Inner form section -->
+        <div class="row">
+          <!-- form components consisting of buttonset and dropdown menus
+               for the property search -->
+          <div class="c2 prop-buttonset">
+            <span class="prop-type-radioset element">
+            <label class="labels form-component buttonset-label" >Type of property</label>
+            <input type="radio" class="form-component" id="house" name="property-type">
+            <label for="house">House</label>
+            <input type="radio"  class="form-component" id="flat" name="property-type" checked>
+            <label for="flat" class="form-component" >Flat</label>
+            <input type="radio"  class="form-component" id="all" name="property-type">
+            <label for="all" class="form-component" >All</label>
+            </span>
+          </div>
+          <div class="c2 min-p-c2">
+            <span class="form-component property-price-min-sel element">
+              <label class="labels form-component min-p-lbl">Min Price</label>
+              <select class="selections price-min form-component">
+                <option>No Min</option>
+                <option>50,023</option>
+                <option>80,000</option>
+                <option>100,000</option>
+                <option>200,000</option>
+                <option>300,000</option>
+                <option>350,000</option>
+                <option>400,000</option>
+              </select>
+            </span>
+          </div>
+          <div class="c2">
+            <span class="property-price-max-sel element">
+              <label class="labels form-component max-p-lbl" >Max Price</label>
+              <select class="selections price-max form-component">
+                <option>No Max</option>
+                <option>450,023</option>
+                <option>500,000</option>
+                <option>600,000</option>
+                <option>700,000</option>
+                <option>800,000</option>
+                <option>1,000,000</option>
+                <option>2,000,000</option>
+              </select>
+            </span>
+          </div>
+          <div class="c2 min-room-section">
+            <span class="property-rooms-min-sel element">
+              <label class="labels form-component min-r-lbl">Min Rooms</label>
+              <select class="selections room-min form-component" >
+                <option>No Min</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </span>
+          </div>
+          <div class="c2">
+            <span class="property-rooms-max-sel element">
+              <label class="labels form-component max-r-lbl" >Max Rooms</label>
+              <select class="selections room-max form-component">
+                <option>No Max</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>10</option>
+              </select>
+            </span>
+          </div>
+        </div>
+        <!-- //End of row -->
+        <div class="row">
+          <div class="c2">
+            <!-- buttons for viewing and clearing the favourites list -->
+            <div class="favourites">
+              <a href="#anchor"><button class="btn form-component fav-btn">Favourites</button></a>
+            </div>
+          </div>
+          <div class="c2">
+            <div class="clear-fav">
+              <button class="btn form-component clr-fav-btn">Clear Favourites</button>
+            </div>
+          </div>
+          <div class="search">
+            <a href="#anchor"><button class="btn srch">Search for Property</button></a>
+          </div>
+        </div>
+        <div class="c2 upper-right-c2">
+        </div>
+      </div>
+      <div class="clr divide-center"></div>
+      <div class="row">
+        <div class="c2 aside-c2">
+          <div class="upper-sightline"></div>
+          <div class="sightline"><a name="anchor"></a></div>
+        </div>
+        <div class="c8" id="demo-col-mid">
+          <div id="placeholder"></div>
+        </div>
+        <div class="c2"></div>
+      </div>
+      <!-- //End row -->
+      <div class="row clr">
+        <div class="c4">
+          <!-- large containers at the bottom of the page -->
+          <div class="promo-container container1">
+            <div class="container-main-text">Buying<br> a <br>Property</div>
+            <a href="#" class="container1-btn">Learn More</a>
+          </div>
+        </div>
+        <div class="c4">
+          <div class="promo-container container2">
+            <div class="container-main-text">Selling<br>a<br> Property</div>
+            <a href="#" class="container2-btn">Learn More</a>
+          </div>
+        </div>
+        <div class="c4">
+          <div class="promo-container container3">
+            <div class="container-main-text">Quote<br> for<br> Selling</div>
+            <a href="#" class="container3-btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <!-- footer consisting of copyright notice and navigation menu -->
+      <footer class="clr">
+        <ul class="ftr clr">
+          <li><a href="#">Buy</a></li>
+          <li><a href="#">Sell</a></li>
+          <li><a href="#">Advice</a></li>
+          <li><a href="#">Search</a></li>
+        </ul>
+        <div class="copy">Copyright &copy; 2015, O'Grady Estate Agent.</div>
+      </footer>
+    </section>
+    <script src="js/prop_search.js"></script>
+  </body>
 </html>
