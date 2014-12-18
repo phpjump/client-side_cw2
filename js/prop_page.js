@@ -63,6 +63,8 @@ $(document).ready(function() {
      * it then displays the relevant values on the page
      */
 
+     //this function was removed because of chrome not allowing ajax type calls on local file systems
+     //so for the sake of testing, it was removed and the JSON data was made internally accessable.
     // $.getJSON('properties.json', function(data) {
     var output = "<ul>";
     for (var i in data.properties) {

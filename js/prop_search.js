@@ -27,6 +27,8 @@ $(document).ready(function() {
 		$(".btn").button();
 	});
 
+     //this function was removed because of chrome not allowing getJSON() calls on local file systems
+     //so for the sake of testing, it was removed and the JSON data was made internally accessable.
 	// $.getJSON('properties.json', function(data) {
 		var propertyArr = [];
 		for (var i in data.properties) {
