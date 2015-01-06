@@ -29,7 +29,7 @@ $(document).ready(function() {
 
      //this function was removed because of chrome not allowing getJSON() calls on local file systems
      //so for the sake of testing, it was removed and the JSON data was made internally accessable.
-	// $.getJSON('properties.json', function(data) {
+	 //$.getJSON('properties.json', function(data) {
 		var propertyArr = [];
 		for (var i in data.properties) {
 			propertyArr[i] = data.properties[i].type;
@@ -111,11 +111,14 @@ $(document).ready(function() {
 							var price = numberWithCommas(data.properties[i].price);
 							var description = data.properties[i].description;
 
-							output += "<div class='property-detail'><div class='row'><div class='c2'><a href='property-details.html?id=" + data.properties[i].id + "'>" + "<img class='property-image' src='" + data.properties[i].picture + "'></a></div>" + "<div class='c8'><span class='prop-location'>" + data.properties[i].type + ":    " + data.properties[i].location + "</span>  " + "<p class='short-desc'>" + smartTrim(description, 330, ' ', '   ') + "<a class='property-link' href='property-details.html?id=" + data.properties[i].id + "'>  &nbsp;&nbsp;More....</a></p></div>" + "<div class='c2 prop-price'><div class='pound sprite price-image'></div><span class='price-text'>&pound;" + price + "</span><div class='bedroom sprite bed-image'></div><span class='bed-text'>Bedroom: "+data.properties[i].bedrooms+"</span></div></div></div><div class='clr'></div>";
-						}
+							output += "<div class='property-detail'><div class='row'><div class='c2'><a href='property-details.html?id=" + data.properties[i].id + "'>" + "<img class='property-image' src='" + data.properties[i].picture + "'></a></div>" + "<div class='c8'><span class='prop-location'>" + data.properties[i].type + ":    " + data.properties[i].location + "</span>  " + "<p class='short-desc'>" + smartTrim(description, 330, ' ', '   ') + "<a class='property-link' href='property-details.html?id=" + data.properties[i].id + "'>  &nbsp;&nbsp;More....</a></p></div>" + "<div class='c2 prop-price'><div class='pound sprite price-image'></div><span class='price-text'>&pound;" + price + "</span><div class='bedroom sprite bed-image'></div><span class='bed-text'>Bedroom: "+data.properties[i].bedrooms+"</span><div class='removal-fav-search-page' id='" + data.properties[i].id +"' onclick='removeFavouriteElement(this.id)'>Remove Favourite</div></div></div></div><div class='clr'></div>";
+						
+ 
+                        }
 					}
 				}
 			}
+
 
 			output += "</ul>";
 			document.getElementById("placeholder").innerHTML = output;
@@ -124,8 +127,13 @@ $(document).ready(function() {
 				var notFound = "<div class='not-found'>You have no favourites at the moment.</div>";
 				document.getElementById("placeholder").innerHTML = notFound;
 			}
+
+         
 		});
 
+        /**
+         * This function simply clears the favourite list array of all elements
+         */
 		$(".clear-fav").on("click", function() {
 			favouriteProperties = JSON.parse(localStorage.getItem("favProperty"));
 			if (favouriteProperties == null) {
@@ -135,7 +143,31 @@ $(document).ready(function() {
 		});
 	});
 
-// });
+/**
+ * This function is responsible for removing a given element from
+ * the favourites list in the search page
+ */
+function removeFavouriteElement(elem) {
+   favouriteProperties = JSON.parse(localStorage.getItem("favProperty"));
+     
+        for (var j = 0; j < favouriteProperties.length; j++) {
+
+            if (favouriteProperties[j] == elem) {
+               
+               favouriteProperties.splice(j, 1);
+               localStorage.setItem("favProperty", JSON.stringify(favouriteProperties));
+                $(".status").css("display", "block")
+                $(".status").text("Property has been removed from favourites.");
+                var element = "#"+elem;
+                $(element).text("Removed");
+                $(element).css({
+                  "color": "##555",
+                  "text-decoration": "none",
+                  "cursor": "default"
+                });
+            }
+        }
+}
 
 /**
  * this function removes the last word when the substring function
@@ -160,6 +192,7 @@ function numberWithCommas(n) {
 	var parts = n.toString().split(".");
 	return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
 }
+
 
 /**
  *------------------------------------------------------

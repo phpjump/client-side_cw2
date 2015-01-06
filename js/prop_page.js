@@ -27,23 +27,28 @@ $(document).ready(function() {
     });
 
     /**
-     * this function sets the components with the id 'tabs' to a jQuery styled tab system
-     * it also ensures the first tabs is open when page is loaded
+     * These two following functions work together to allow the google map to
+     * be displayed fully on a jQuery tab other than the first tab
+     * 
      */
     $(function() {
-        $("#tabs").tabs({
-            active: 0
-        });
+        setTimeout(setTab, 100);     
     });
 
-    /**
-     * This function enables parameters passed in the URL to be retrieved and stored into another variable.
-     * This makes it easier to create a page for the property dynamically because we only need the
-     * 'id' value to know what property to display.
-     * So when property details are displayed it will be the same page displayed each time, but with 
-     * different properties.
-     * It also gives me the ability to add more than one parameter if need be.
-     */
+    function setTab() {
+        $("#tabs").tabs({
+                active: 1
+        });
+    }
+    
+   /**
+    * This function enables parameters passed in the URL to be retrieved and stored into another variable.
+    * This makes it easier to create a page for the property dynamically because we only need the
+    * 'id' value to know what property to display.
+    * So when property details are displayed it will be the same page displayed each time, but with 
+    * different properties.
+    * It also gives me the ability to add more than one parameter if need be.
+    */
     function getUrlParameter(param) {
         var pageURL = window.location.search.substring(1);
         var UrlVariables = pageURL.split('&');
@@ -122,14 +127,12 @@ $(document).ready(function() {
         for (var j = 0; j < favouriteProperties.length; j++) {
 
             if (favouriteProperties[j] == propertyId) {
-                favouriteProperties.pop(propertyId);
-                localStorage.setItem("favProperty", JSON.stringify(favouriteProperties));
+               
+                favouriteProperties.splice(j, 1);
+               localStorage.setItem("favProperty", JSON.stringify(favouriteProperties));
                 $(".status").css("display", "block")
                 $(".status").text("Property has been removed from favourites.");
-            } else {
-                $(".status").css("display", "block")
-                $(".status").text("Property is not set as a favourite.");
-            }
+            } 
         }
     });
 
